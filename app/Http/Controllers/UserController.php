@@ -20,5 +20,26 @@ class UserController extends Controller
 
         return $user;
     }
+
+    //login
+    function login(Request $req) {
+        
+        $user = User::where('email', $req->email)->first();
+        if(!$user || !Hash::check($req->password, $user->password)) {
+            return ["error"=> "Email or password is not matched"];
+        }
+
+        return $user;
+    }
+
+    function addWishlist(){
+        $wishlist= new Wishlist;
+
+        $product->name = $req->input('name');
+
+        $product->save();
+
+        return $product;
+    }
     
 }

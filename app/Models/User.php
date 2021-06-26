@@ -11,6 +11,17 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    public function wishlist()
+    {
+        return $this->hasOne(Wishlist::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
